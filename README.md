@@ -108,7 +108,7 @@ Key args:
 
 ## 6️) Outputs
 
-Saved under `--outdir` (default `runs/emonet_train/`):
+Saved under `--outdir`:
 
 * `ckpt_best.pth` — best by `ccc_mean`
 * `metrics.csv` — per-epoch metrics (losses, CCC, RMSE, MAE, expr acc)
