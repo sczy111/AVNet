@@ -14,7 +14,7 @@ pip install opencv-python pandas numpy tqdm
 
 Use the version suitable for your PC setup.
 
-Ensure `emonet.models.EmoNet` is accessible (e.g., via `PYTHONPATH` or editable install).
+Ensure `emonet.models.EmoNet` is accessible.
 
 ---
 
