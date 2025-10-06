@@ -62,7 +62,7 @@ pretrained/emonet_8.pth
 * **Heads**:
 
   * VA: CCC loss for valence & arousal.
-  * Expr (optional): CrossEntropy loss.
+  * Expression (optional): CrossEntropy loss.
 * **Total Loss** = VA loss + λ × Expr loss.
 * Optional **unfreeze** backbone after N epochs to fine-tune fully.
 
@@ -79,7 +79,7 @@ python train_emonet.py \
   --nclasses 8 --epochs 40 --batch 32
 ```
 
-### VA + Expr
+### VA + Exprpressions
 
 ```bash
 python train_emonet.py \
