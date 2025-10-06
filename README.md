@@ -5,19 +5,20 @@ A PyTorch script for **transfer learning on EmoNet**, supporting **Valence–Aro
 
 ---
 
-## 1️⃣ Environment
+## 1️) Environment
 
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 pip install opencv-python pandas numpy tqdm
 ```
 
+Use the version suitable for your PC setup.
 
 Ensure `emonet.models.EmoNet` is accessible (e.g., via `PYTHONPATH` or editable install).
 
 ---
 
-## 2️⃣ Data Format
+## 2️) Data Format
 
 Two CSV files: **train** and **test**.
 
@@ -33,15 +34,18 @@ Two CSV files: **train** and **test**.
 * 8-class: `neutral, happy, sad, surprise, fear, disgust, anger, contempt`
 * 5-class: `neutral, happy, sad, surprise, fear`
 
-```csv
-pth,label,valence,arousal
-img1.jpg,happy,0.6,0.4
-img2.jpg,sad,-0.4,0.1
-```
+Example CSV file layout:
+
+| pth                  | label    | valence | arousal |
+|-----------------------|---------|---------|---------|
+| img_0001.jpg    | happy   | 0.60    | 0.40    |
+| img_0103.jpg    | sad     | -0.40   | 0.10    |
+| img_2010.jpg    | neutral | 0.02    | -0.05   |
+
 
 ---
 
-## 3️⃣ Pretrained Weights
+## 3️) Pretrained Weights
 
 Automatically loads if found:
 
@@ -52,7 +56,7 @@ pretrained/emonet_8.pth
 
 ---
 
-## 4️⃣ Core Idea
+## 4️) Core Idea
 
 * **Backbone**: frozen EmoNet feature extractor.
 * **Heads**:
@@ -64,7 +68,7 @@ pretrained/emonet_8.pth
 
 ---
 
-## 5️⃣ Usage
+## 5️) Usage
 
 ### VA only
 
@@ -97,10 +101,12 @@ Key args:
 * `--use_expr` — enable expression training
 * `--epochs`, `--batch`, `--lr`, `--amp` — training settings
 * `--unfreeze_backbone_after` — staged fine-tuning
+* Monitor **`ccc_mean`** (main VA metric).
+* Use `--amp` to reduce GPU memory.
 
 ---
 
-## 6️⃣ Outputs
+## 6️) Outputs
 
 Saved under `--outdir` (default `runs/emonet_train/`):
 
@@ -108,32 +114,9 @@ Saved under `--outdir` (default `runs/emonet_train/`):
 * `metrics.csv` — per-epoch metrics (losses, CCC, RMSE, MAE, expr acc)
 * `emonet_<N>_finetuned.pth` — final model
 
----
 
-## 7️⃣ Tips
 
-* Start with **frozen backbone**, unfreeze later if dataset is large or different.
-* Monitor **`ccc_mean`** (main VA metric).
-* Use `--amp` to reduce GPU memory.
-* Label set must match canonical 5/8 classes.
-
----
-
-## 8️⃣ Example Full Command
-
-```bash
-python train_emonet.py \
-  --train_csv data/train.csv --test_csv data/val.csv \
-  --train_root data/img --test_root data/img \
-  --nclasses 8 --use_expr --lambda_expr 0.5 \
-  --epochs 40 --batch 32 --lr 3e-4 \
-  --amp --unfreeze_backbone_after 8 \
-  --outdir runs/demo
-```
-
----
-
-## 9️⃣ Troubleshooting
+## 7) Troubleshooting
 
 * ❌ *Unknown labels* → match canonical label set.
 * ❌ *OOM errors* → lower `--batch` or `--size`, enable `--amp`.
@@ -142,9 +125,7 @@ python train_emonet.py \
 
 ---
 
-## 🔟 Licensing
+## 8) Licensing
 
 Follow EmoNet’s and dataset licenses. Ensure legal/ethical compliance for facial data use (e.g., GDPR).
 
-```
-```
