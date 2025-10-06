@@ -1,5 +1,5 @@
 # AVNet
-# EmoNet Fine-Tuning — `train_emonet.py`
+## EmoNet Fine-Tuning — train_emonet.py
 
 A PyTorch script for **transfer learning on EmoNet**, supporting **Valence–Arousal (VA) regression** and optional **facial expression classification** (5 or 8 classes). Includes staged fine-tuning, mixed precision, metric logging, and checkpointing.
 
