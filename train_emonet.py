@@ -26,7 +26,7 @@ def set_seed(seed: int):
 def ccc(x, y, eps=1e-8):
     """
     Concordance Correlation Coefficient ([-1, 1]).
-    Higher is better; 1.0 = perfect agreement.
+    Higher is better.
     """
     x = x.float(); y = y.float()
     xm, ym = x.mean(), y.mean()
@@ -53,10 +53,7 @@ def normalize_label(s: str) -> str:
     return str(s).strip().lower()
 
 def build_fixed_label_map(nclasses: int):
-    """
-    Fixed label mapping (name → id) matching EmoNet’s expected class order.
-    Restrict to 5 or 8 classes for consistency with pretrained heads.
-    """
+
     if nclasses == 8:
         order = CANONICAL_8
     elif nclasses == 5:
@@ -291,7 +288,7 @@ def main():
         state = {k.replace("module.", ""): v for k, v in state.items()}
         model.load_state_dict(state, strict=False)
 
-    # only train trainable (last) layers by default
+    # only train last layer by default
     trainable_params = [p for p in model.parameters() if p.requires_grad]
     optimizer = torch.optim.AdamW(trainable_params, lr=args.lr, weight_decay=args.weight_decay)
     scaler = torch.amp.GradScaler('cuda') if (args.amp and device == "cuda") else None
