@@ -69,13 +69,13 @@ pretrained/emonet_8.pth
 ---
 
 ## 5️) Usage
-
+For example, if you use Emodataset and put it in the same folder as train_emonet.py.
 ### VA only
 
 ```bash
 python train_emonet.py \
-  --train_csv data/train.csv --test_csv data/val.csv \
-  --train_root data/images --test_root data/images \
+  --train_csv Emodataset/train_labels.csv --test_csv Emodataset/test_labels.csv \
+  --train_root Emodataset/train --test_root Emodataset/test \
   --nclasses 8 --epochs 40 --batch 32
 ```
 
@@ -83,8 +83,8 @@ python train_emonet.py \
 
 ```bash
 python train_emonet.py \
-  --train_csv data/train.csv --test_csv data/val.csv \
-  --train_root data/images --test_root data/images \
+  --train_csv Emodataset/train_labels.csv --test_csv Emodataset/test_labels.csv \
+  --train_root Emodataset/train --test_root Emodataset/test \
   --nclasses 8 --use_expr --lambda_expr 1.0
 ```
 
@@ -128,4 +128,10 @@ Saved under `--outdir`:
 ## 8) Licensing
 
 Follow EmoNet’s and dataset licenses. Ensure legal/ethical compliance for facial data use (e.g., GDPR).
+
+
+
+You can describe your project’s **data structure** clearly in a Markdown file using a **tree diagram** and short descriptions.
+Here’s a clean example you can directly paste into your `.md` file:
+
 
