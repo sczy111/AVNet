@@ -6,7 +6,7 @@ A PyTorch script for **transfer learning on EmoNet**, supporting **Valence–Aro
 ---
 
 ## 1️) Environment
-
+You may need to install following:
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 pip install opencv-python pandas numpy tqdm
