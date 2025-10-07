@@ -131,7 +131,4 @@ Follow EmoNet’s and dataset licenses. Ensure legal/ethical compliance for faci
 
 
 
-You can describe your project’s **data structure** clearly in a Markdown file using a **tree diagram** and short descriptions.
-Here’s a clean example you can directly paste into your `.md` file:
-
 
